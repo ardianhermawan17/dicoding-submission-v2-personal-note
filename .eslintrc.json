@@ -30,6 +30,16 @@
         "import/prefer-default-export": "off",
         "no-console":"off",
         "linebreak-style": 0,
-        "jsx-quotes": [2, "prefer-single"]
+        "jsx-quotes": [2, "prefer-single"],
+        "jsx-a11y/label-has-associated-control": [ "error", {
+            "required": {
+              "some": [ "nesting", "id"  ]
+            }
+          }],
+          "jsx-a11y/label-has-for": [ "error", {
+            "required": {
+              "some": [ "nesting", "id"  ]
+            }
+          }]
     }
 }

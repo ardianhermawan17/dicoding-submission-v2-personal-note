@@ -1,16 +1,13 @@
 import { useState } from 'react';
 
-export default function useLocalStorage(keyName, defaultValue, isJSON = true) {
+export default function useLocalStorage(keyName, defaultValue) {
 	const [storedValue, setStoredValue] = useState(() => {
 		try {
 			const value = localStorage.getItem(keyName);
 			if (value) {
-				return isJSON ? JSON.parse(value) : value;
+				return JSON.parse(value);
 			}
-			localStorage.setItem(
-				keyName,
-				isJSON ? JSON.stringify(defaultValue) : defaultValue
-			);
+			localStorage.setItem(keyName, JSON.stringify(defaultValue));
 			return defaultValue;
 		} catch (err) {
 			return defaultValue;
@@ -19,10 +16,7 @@ export default function useLocalStorage(keyName, defaultValue, isJSON = true) {
 
 	const setValue = (newValue) => {
 		try {
-			localStorage.setItem(
-				keyName,
-				isJSON ? JSON.stringify(defaultValue) : defaultValue
-			);
+			localStorage.setItem(keyName, JSON.stringify(defaultValue));
 		} catch (err) {
 			console.error(err);
 		}

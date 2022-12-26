@@ -8,6 +8,7 @@ import DetailPage from './pages/DetailPage';
 import CreatePage from './pages/CreatePage';
 import Page404 from './components/error-pages/404';
 import ProtectedPage from './components/auth/ProtectedPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
 	function authPage(pages) {
@@ -23,6 +24,8 @@ function App() {
 					<Route path='/archive' element={<ArchivePage />} />
 					<Route path='/note/:id' element={<DetailPage />} />
 					<Route path='/create' element={authPage(<CreatePage />)} />
+
+					<Route path='/login' element={<LoginPage />} />
 					<Route path='*' element={<Page404 />} />
 				</Routes>
 			</main>
