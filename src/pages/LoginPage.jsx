@@ -2,8 +2,8 @@
 import React from 'react';
 import InputEmail from '../components/auth/login/InputEmail';
 import InputPassword from '../components/auth/login/InputPassword';
-import { useAuth } from '../helpers/hooks/useAuth';
-import useInput from '../helpers/hooks/useInput';
+import { useAuth } from '../hooks/useAuth';
+import useInput from '../hooks/useInput';
 
 function LoginPage() {
 	const [email, handleEmailChange] = useInput('');
