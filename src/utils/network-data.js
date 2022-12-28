@@ -18,7 +18,7 @@ async function fetchWithToken(url, options = {}) {
 	});
 }
 
-async function login({ email, password }) {
+async function loginConnect({ email, password }) {
 	const response = await fetch(`${BASE_URL}/login`, {
 		method: 'POST',
 		headers: {
@@ -37,7 +37,7 @@ async function login({ email, password }) {
 	return { error: false, data: responseJson.data };
 }
 
-async function register({ name, email, password }) {
+async function registerConnect({ name, email, password }) {
 	const response = await fetch(`${BASE_URL}/register`, {
 		method: 'POST',
 		headers: {
@@ -163,8 +163,8 @@ async function deleteNote(id) {
 export {
 	getAccessToken,
 	putAccessToken,
-	login,
-	register,
+	loginConnect,
+	registerConnect,
 	getUserLogged,
 	addNote,
 	getActiveNotes,

@@ -10,9 +10,9 @@ function LoginPage() {
 	const [password, handlePasswordChange] = useInput('');
 	const { login } = useAuth();
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
-		login({
+		await login({
 			email,
 			password,
 		});
