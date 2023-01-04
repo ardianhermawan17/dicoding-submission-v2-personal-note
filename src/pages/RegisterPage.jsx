@@ -1,31 +1,25 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import InputName from '../components/auth/InputField/InputName';
 import InputEmail from '../components/auth/InputField/InputEmail';
 import InputPassword from '../components/auth/InputField/InputPassword';
-import { useAuth } from '../context/AuthContext';
 import useInput from '../hooks/useInput';
 
-function LoginPage() {
+function RegisterPage() {
 	const [email, handleEmailChange] = useInput('');
 	const [password, handlePasswordChange] = useInput('');
-	const { login } = useAuth();
+	const [confirmPassword, handleConfirmPasswordChange] = useInput('');
+	const [name, handleNameChange] = useInput('');
 	const { t } = useTranslation();
 
 	async function handleSubmit(event) {
 		event.preventDefault();
-		await login({
-			email,
-			password,
-		});
 	}
-
 	return (
 		<div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
 			<div className='mx-auto max-w-lg text-center'>
 				<h1 className='text-2xl font-bold sm:text-3xl'>
-					{t('Login dulu okay!')}
+					{t('Daftar dulu okay!')}
 				</h1>
 
 				<p className='mt-4 text-gray-500'>{t('semoga bintang 5')}</p>
@@ -35,25 +29,26 @@ function LoginPage() {
 				onSubmit={handleSubmit}
 				className='mx-auto mt-8 mb-0 max-w-md space-y-4'
 			>
+				<InputName name={name} onChangeName={handleNameChange} />
+
 				<InputEmail email={email} onChangeEmail={handleEmailChange} />
 
 				<InputPassword
 					password={password}
 					onChangePassword={handlePasswordChange}
 				/>
-				<div className='flex items-center justify-between'>
-					<p className='text-sm text-gray-500'>
-						{t('Tidak ada akun?')}
-						<Link to='/register' className='underline'>
-							{t('daftar')}
-						</Link>
-					</p>
 
+				<InputPassword
+					isConfirmPassword
+					password={confirmPassword}
+					onChangePassword={handleConfirmPasswordChange}
+				/>
+				<div className='flex items-center justify-end'>
 					<button
 						type='submit'
 						className='ml-3 inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white'
 					>
-						{t('masuk')}
+						{t('daftar')}
 					</button>
 				</div>
 			</form>
@@ -61,4 +56,4 @@ function LoginPage() {
 	);
 }
 
-export default LoginPage;
+export default RegisterPage;

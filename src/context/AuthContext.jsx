@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authenticateService from '../services/authenticate.service';
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const AuthContext = createContext('');
 
@@ -9,7 +9,7 @@ function AuthProvider({ children }) {
 	const [user, setUser] = useLocalStorage('accessToken', null);
 	const navigate = useNavigate();
 
-	// call fucntion when authenticate user
+	// call function when authenticate user
 	async function login(data) {
 		const response = await authenticateService.login(data);
 		if (response.error) {

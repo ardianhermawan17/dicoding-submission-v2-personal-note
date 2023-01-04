@@ -13,9 +13,7 @@ function Header() {
 	const [toggle, setToggle] = useState(false);
 
 	function onHandleToggle(toggleStatus) {
-		setToggle(() => ({
-			toggle: toggleStatus,
-		}));
+		setToggle(() => toggleStatus);
 	}
 
 	return (

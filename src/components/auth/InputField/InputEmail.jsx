@@ -1,19 +1,22 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-function InputPassword({ password, onChangePassword }) {
+function InputEmail({ email, onChangeEmail }) {
+	const { t } = useTranslation();
 	return (
 		<div>
-			<label htmlFor='password' className='sr-only'>
-				Password
+			<label htmlFor='email' className='sr-only'>
+				{t('email')}
 			</label>
+
 			<div className='relative'>
 				<input
-					type='password'
-					name='password'
-					defaultValue={password}
-					onClick={onChangePassword}
+					type='email'
+					name='email'
+					defaultValue={email}
+					onChange={onChangeEmail}
 					className='w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'
-					placeholder='Enter password'
+					placeholder={t('Masukkan email')}
 				/>
 
 				<span className='absolute inset-y-0 right-4 inline-flex items-center'>
@@ -28,13 +31,7 @@ function InputPassword({ password, onChangePassword }) {
 							strokeLinecap='round'
 							strokeLinejoin='round'
 							strokeWidth='2'
-							d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
-						/>
-						<path
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							strokeWidth='2'
-							d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+							d='M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207'
 						/>
 					</svg>
 				</span>
@@ -43,4 +40,4 @@ function InputPassword({ password, onChangePassword }) {
 	);
 }
 
-export default InputPassword;
+export default InputEmail;
