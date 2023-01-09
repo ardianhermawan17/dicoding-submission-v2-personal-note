@@ -1,33 +1,47 @@
 /* eslint-disable no-script-url */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import Switcher from './base/Switcher';
+import useDarkSide from '../hooks/useDarkSide';
 
 // eslint-disable-next-line react/prefer-stateless-function
 
-const navigation = [
-	{ title: 'Notes', path: '/' },
-	{ title: 'Arsip', path: '/archive' },
-];
-
 function Header() {
 	const [toggle, setToggle] = useState(false);
+	const [theme] = useDarkSide();
+	const { t } = useTranslation();
+
+	const navigation = [
+		{ title: 'Note', path: '/' },
+		{ title: `${t('Arsip')}`, path: '/archive' },
+	];
 
 	function onHandleToggle(toggleStatus) {
 		setToggle(() => toggleStatus);
 	}
 
 	return (
-		<nav className='bg-white w-full border-b md:border-0 md:static'>
+		<nav className='bg-white dark:bg-black w-full border-b md:border-0 md:static'>
 			<div className='items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8'>
 				<div className='flex items-center justify-between py-3 md:py-5 md:block'>
 					<Link to='/'>
 						<button type='button'>
-							<img
-								src='https://www.dicoding.com/blog/wp-content/uploads/2014/12/dicoding-header-logo.png'
-								width={120}
-								height={50}
-								alt='Float UI logo'
-							/>
+							{theme === 'light' ? (
+								<img
+									src='https://www.dicoding.com/blog/wp-content/uploads/2014/12/dicoding-header-logo.png'
+									width={120}
+									height={50}
+									alt='Float UI logo'
+								/>
+							) : (
+								<img
+									src='https://www.dicoding.id/wp-content/uploads/2020/07/Logo-Dicoding-Putih.png'
+									width={120}
+									height={50}
+									alt='Float UI logo'
+								/>
+							)}
 						</button>
 					</Link>
 					<div className='md:hidden'>
@@ -78,12 +92,19 @@ function Header() {
 							<li
 								// eslint-disable-next-line react/no-array-index-key
 								key={`${idx}`}
-								className='text-gray-600 text-lg hover:text-indigo-600'
+								className='text-gray-600 dark:text-white dark:hover:text-indigo-600  text-lg hover:text-indigo-600'
 							>
 								<Link to={item.path}>{item.title}</Link>
 							</li>
 						))}
 					</ul>
+				</div>
+				<div
+					className={`flex-0 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+						toggle ? 'block' : 'hidden'
+					}`}
+				>
+					<Switcher />
 				</div>
 			</div>
 		</nav>

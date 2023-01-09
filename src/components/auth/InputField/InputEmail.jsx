@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 function InputEmail({ email, onChangeEmail }) {
@@ -15,14 +16,14 @@ function InputEmail({ email, onChangeEmail }) {
 					name='email'
 					defaultValue={email}
 					onChange={onChangeEmail}
-					className='w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm'
+					className='w-full rounded-lg bg-gray-50 dark:bg-black  focus:border-indigo-600 text-gray-500 dark:text-white p-4 pr-12 text-sm shadow-sm'
 					placeholder={t('Masukkan email')}
 				/>
 
 				<span className='absolute inset-y-0 right-4 inline-flex items-center'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
-						className='h-5 w-5 text-gray-400'
+						className='h-5 w-5 text-gray-400 dark:text-indigo-600'
 						fill='none'
 						viewBox='0 0 24 24'
 						stroke='currentColor'
@@ -39,5 +40,10 @@ function InputEmail({ email, onChangeEmail }) {
 		</div>
 	);
 }
+
+InputEmail.propTypes = {
+	email: PropTypes.string.isRequired,
+	onChangeEmail: PropTypes.func.isRequired,
+};
 
 export default InputEmail;

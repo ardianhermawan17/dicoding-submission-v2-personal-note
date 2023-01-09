@@ -13,4 +13,7 @@ export default {
 	'Masukkan konfirmasi Password': 'Enter Confirm Password',
 	'Masukkan Password': 'Input Password',
 	Password: 'Password',
+
+	'Sisa karakter': 'Rest of the characters',
+	Arsip: 'Archive',
 };

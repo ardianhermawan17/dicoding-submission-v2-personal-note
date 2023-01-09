@@ -11,6 +11,10 @@ export default {
 	Password: 'Password',
 	'Masukkan email': 'Masukkan email',
 	'Masukkan nama': 'Masukkan nama',
-	'Masukkan Konfirmasi Password': 'Masukkan Konfrimasi Password',
+	'Masukkan konfirmasi Password': 'Masukkan Konfrimasi Password',
 	'Masukkan Password': 'Masukkan Password',
+
+	'Sisa karakter': 'Sisa karakter',
+
+	Arsip: 'Arsip',
 };

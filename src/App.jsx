@@ -4,7 +4,7 @@ import Routes from './Routes';
 
 function App() {
 	return (
-		<div className='bg-gray-100 pb-24 min-h-screen'>
+		<div className='bg-gray-100 dark:bg-neutral-800  pb-24 min-h-screen '>
 			<Header />
 			<main>
 				<Routes />

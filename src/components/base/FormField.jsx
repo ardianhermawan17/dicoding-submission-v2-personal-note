@@ -1,19 +1,20 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 // eslint-disable-next-line object-curly-newline
 function FormField({
 	type,
 	name,
 	value,
-	maxLength,
+	maxLength = 12,
 	onHandleChange,
 	placeholder,
 	className,
 }) {
 	const [wordCount, setWordCount] = useState(0);
+	const { t } = useTranslation();
 
 	function onWordChange(event) {
 		if (event.key === 'Backspace' && wordCount <= maxLength) {
@@ -23,7 +24,9 @@ function FormField({
 
 	return (
 		<div className='flex flex-col w-full'>
-			<h4 className='text-white'>Sisa karakter : {maxLength - wordCount} </h4>
+			<h4 className='text-gray-700 dark:text-white'>
+				{t('Sisa karakter')} : {maxLength - wordCount}{' '}
+			</h4>
 			<input
 				type={type}
 				id={name}

@@ -7,7 +7,7 @@ import ArchiveNoteItemBody from './ArchiveNoteItemBody';
 // eslint-disable-next-line object-curly-newline
 function ArchiveNoteItem({ id, title, img, body, createdAt }) {
 	return (
-		<article className='max-w-md min-w-full mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm'>
+		<article className='max-w-md min-w-full mx-auto mt-4 shadow-lg border rounded-md duration-300 dark:hover:border-cyan-500 hover:shadow-sm'>
 			<div>
 				<div className='flex items-center mt-2 pt-3 ml-4 mr-2'>
 					<ArchiveNoteItemImage imageUrl={img} title={title} />

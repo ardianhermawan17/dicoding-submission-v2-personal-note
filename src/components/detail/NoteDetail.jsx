@@ -14,9 +14,13 @@ function NoteDetail({ id, title, body, archived, createdAt }) {
 			<div className=' max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
 				<div className='grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16'>
 					<div className='mx-auto max-w-lg text-center lg:mx-0 lg:text-left'>
-						<h2 className='text-3xl font-bold sm:text-4xl'>{title}</h2>
+						<h2 className='text-3xl font-bold dark:text-sky-400 sm:text-4xl'>
+							{title}
+						</h2>
 						<div className='flex flex-row items-center'>
-							<h2 className='m-2 font-bold'>{showFormattedDate(createdAt)}</h2>
+							<h2 className='m-2 font-bold dark:text-white'>
+								{showFormattedDate(createdAt)}
+							</h2>
 							<div className='my-2'>
 								<IconContext.Provider value={reactIconStyling}>
 									{archived ? (
@@ -32,7 +36,7 @@ function NoteDetail({ id, title, body, archived, createdAt }) {
 							</div>
 						</div>
 
-						<p className='mt-4 text-gray-600'>{body}</p>
+						<p className='mt-4 text-gray-600 dark:text-white'>{body}</p>
 
 						<NoteDetailButton id={id} archived={archived} />
 					</div>

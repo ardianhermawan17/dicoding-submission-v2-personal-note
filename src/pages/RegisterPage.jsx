@@ -18,7 +18,7 @@ function RegisterPage() {
 	return (
 		<div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
 			<div className='mx-auto max-w-lg text-center'>
-				<h1 className='text-2xl font-bold sm:text-3xl'>
+				<h1 className='py-3 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl'>
 					{t('Daftar dulu okay!')}
 				</h1>
 

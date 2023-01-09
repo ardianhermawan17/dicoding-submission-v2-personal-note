@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 function SearchBar({ keyword, keywordChange }) {
 	return (
 		<div className='max-w-md px-4 mx-auto mt-12'>
-			<div className='relative'>
+			<div className='relative '>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
-					className='absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3'
+					className='absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 dark:text-white left-3'
 					fill='none'
 					viewBox='0 0 24 24'
 					stroke='currentColor'
@@ -22,7 +22,7 @@ function SearchBar({ keyword, keywordChange }) {
 				<input
 					type='text'
 					placeholder='Cari berdasarkan nama'
-					className='w-full py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-indigo-600'
+					className='w-full py-3 pl-12 pr-4 text-gray-500 dark:text-white border rounded-md outline-none bg-gray-50 dark:bg-black focus:bg-white focus:border-indigo-600'
 					value={keyword}
 					onChange={(event) => keywordChange(event.target.value)}
 				/>

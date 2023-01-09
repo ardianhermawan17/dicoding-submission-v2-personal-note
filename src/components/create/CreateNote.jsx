@@ -26,7 +26,7 @@ function CreateNote() {
 	}
 
 	return (
-		<div className='flex flex-col bg-indigo-600 items-center justify-around w-full h-auto p-4 shadow-xl bg-primary-600 rounded-xl'>
+		<div className='flex flex-col  items-center justify-around w-full h-auto p-4  bg-primary-600 rounded-xl'>
 			<form className='flex flex-col mt-2 items-center justify-between w-11/12 max-w-[600px] '>
 				<div className='flex flex-col w-full md:flex-row'>
 					<FormField
@@ -50,7 +50,7 @@ function CreateNote() {
 					type='submit'
 					name='Send'
 					value='Send'
-					className='p-3 px-4 mx-auto mt-3 text-lg bg-white rounded-lg shadow-md cursor-pointer text-primary-600 font-sans-bb h-3/4 hover:bg-gray-100'
+					className='p-3 px-4 mx-auto mt-3 text-lg bg-blue-400 text-white rounded-lg shadow-md cursor-pointer text-primary-600 font-sans-bb h-3/4 hover:bg-sky-400'
 				/>
 			</form>
 		</div>
