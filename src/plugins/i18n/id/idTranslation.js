@@ -17,4 +17,11 @@ export default {
 	'Sisa karakter': 'Sisa karakter',
 
 	Arsip: 'Arsip',
+
+	'Password tidak sama': 'Password tidak sama',
+
+	'Daftar Notes': 'Daftar Notes',
+	'Daftar Arsip Notes': 'Daftar Arsip Notes',
+
+	'Cari berdasarkan judul': 'Cari berdasarkan judul',
 };

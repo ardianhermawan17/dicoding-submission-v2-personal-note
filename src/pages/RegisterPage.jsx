@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import InputName from '../components/auth/InputField/InputName';
 import InputEmail from '../components/auth/InputField/InputEmail';
@@ -6,14 +6,25 @@ import InputPassword from '../components/auth/InputField/InputPassword';
 import useInput from '../hooks/useInput';
 
 function RegisterPage() {
+	const [isError, handleIsError] = useState(false);
 	const [email, handleEmailChange] = useInput('');
 	const [password, handlePasswordChange] = useInput('');
 	const [confirmPassword, handleConfirmPasswordChange] = useInput('');
 	const [name, handleNameChange] = useInput('');
 	const { t } = useTranslation();
 
+	function checkConfirmPassword() {
+		if (password === confirmPassword) {
+			handleIsError(false);
+		} else {
+			handleIsError(true);
+		}
+	}
 	async function handleSubmit(event) {
 		event.preventDefault();
+		console.log(password);
+		console.log(confirmPassword);
+		checkConfirmPassword();
 	}
 	return (
 		<div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
@@ -43,6 +54,14 @@ function RegisterPage() {
 					password={confirmPassword}
 					onChangePassword={handleConfirmPasswordChange}
 				/>
+
+				{isError ? (
+					<span className='text-sm text-red-500'>
+						{t('Password tidak sama')}
+					</span>
+				) : (
+					''
+				)}
 				<div className='flex items-center justify-end'>
 					<button
 						type='submit'

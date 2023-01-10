@@ -16,4 +16,11 @@ export default {
 
 	'Sisa karakter': 'Rest of the characters',
 	Arsip: 'Archive',
+
+	'Password tidak sama': 'Password did not match',
+
+	'Daftar Notes': 'List Notes',
+	'Daftar Arsip Notes': 'List Archive Notes',
+
+	'Cari berdasarkan judul': 'Search by title',
 };

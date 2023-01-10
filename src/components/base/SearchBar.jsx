@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 function SearchBar({ keyword, keywordChange }) {
+	const { t } = useTranslation();
 	return (
 		<div className='max-w-md px-4 mx-auto mt-12'>
 			<div className='relative '>
@@ -21,7 +23,7 @@ function SearchBar({ keyword, keywordChange }) {
 				</svg>
 				<input
 					type='text'
-					placeholder='Cari berdasarkan nama'
+					placeholder={t('Cari berdasarkan judul')}
 					className='w-full py-3 pl-12 pr-4 text-gray-500 dark:text-white border rounded-md outline-none bg-gray-50 dark:bg-black focus:bg-white focus:border-indigo-600'
 					value={keyword}
 					onChange={(event) => keywordChange(event.target.value)}

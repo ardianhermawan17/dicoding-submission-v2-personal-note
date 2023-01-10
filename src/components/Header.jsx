@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Switcher from './base/Switcher';
+import TransButton from './base/TransButton';
 import useDarkSide from '../hooks/useDarkSide';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -24,7 +25,7 @@ function Header() {
 	return (
 		<nav className='bg-white dark:bg-black w-full border-b md:border-0 md:static'>
 			<div className='items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8'>
-				<div className='flex items-center justify-between py-3 md:py-5 md:block'>
+				<div className='flex items-center justify-between py-3 md:py-5 md:block '>
 					<Link to='/'>
 						<button type='button'>
 							{theme === 'light' ? (
@@ -53,9 +54,8 @@ function Header() {
 							{toggle ? (
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
-									className='h-6 w-6'
+									className='h-6 w-6 fill-current dark:fill-white'
 									viewBox='0 0 20 20'
-									fill='currentColor'
 								>
 									<path
 										fillRule='evenodd'
@@ -66,10 +66,8 @@ function Header() {
 							) : (
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
-									className='h-6 w-6'
-									fill='none'
+									className='h-6 w-6 fill-current dark:fill-white stroke-current dark:stroke-white'
 									viewBox='0 0 24 24'
-									stroke='currentColor'
 								>
 									<path
 										strokeLinecap='round'
@@ -104,7 +102,10 @@ function Header() {
 						toggle ? 'block' : 'hidden'
 					}`}
 				>
-					<Switcher />
+					<div className='flex justify-between md:justify-start'>
+						<TransButton />
+						<Switcher />
+					</div>
 				</div>
 			</div>
 		</nav>

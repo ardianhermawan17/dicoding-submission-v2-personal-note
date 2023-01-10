@@ -1,14 +1,17 @@
 // eslint-disable-next-line object-curly-newline
 import React, { useContext, useMemo, createContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 const localeContext = createContext('');
 
 function LocaleProvider({ children }) {
 	const [locale, setLocale] = useLocalStorage('locale', 'id');
+	const { i18n } = useTranslation();
 
 	function toggleLocale() {
-		setLocale((prevLocale) => (prevLocale === 'id' ? 'id' : 'en'));
+		setLocale(locale === 'id' ? 'en' : 'id');
+		i18n.changeLanguage(locale === 'id' ? 'en' : 'id');
 	}
 
 	const value = useMemo(
