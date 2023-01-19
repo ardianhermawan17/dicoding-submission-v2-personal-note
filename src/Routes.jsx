@@ -12,22 +12,19 @@ import RegisterPage from './pages/RegisterPage';
 
 function ListRouter() {
 	return (
-		<>
-			<Routes>
-				<Route element={<ProtectedPage />}>
-					<Route index path='/' element={<HomePage />} />
-					<Route path='/add' element={<AddPage />} />
-					<Route path='/archive' element={<ArchivePage />} />
-					<Route path='/note/:id' element={<DetailPage />} />
-					<Route path='/create' element={<CreatePage />} />
-				</Route>
+		<Routes>
+			<Route element={<ProtectedPage />}>
+				<Route index path='/' element={<HomePage />} />
+				<Route path='/add' element={<AddPage />} />
+				<Route path='/archive' element={<ArchivePage />} />
+				<Route path='/note/:id' element={<DetailPage />} />
+				<Route path='/create' element={<CreatePage />} />
+			</Route>
 
-				<Route path='/register' element={<RegisterPage />} />
-				<Route path='/login' element={<LoginPage />} />
-				<Route path='*' element={<Page404 />} />
-			</Routes>
-			;
-		</>
+			<Route path='/register' element={<RegisterPage />} />
+			<Route path='/login' element={<LoginPage />} />
+			<Route path='*' element={<Page404 />} />
+		</Routes>
 	);
 }
 export default ListRouter;

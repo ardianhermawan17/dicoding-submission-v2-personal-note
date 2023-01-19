@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import InputName from '../components/auth/InputField/InputName';
 import InputEmail from '../components/auth/InputField/InputEmail';
 import InputPassword from '../components/auth/InputField/InputPassword';
@@ -11,6 +12,7 @@ function RegisterPage() {
 	const [password, handlePasswordChange] = useInput('');
 	const [confirmPassword, handleConfirmPasswordChange] = useInput('');
 	const [name, handleNameChange] = useInput('');
+	const { register } = useAuth();
 	const { t } = useTranslation();
 
 	function checkConfirmPassword() {
@@ -22,9 +24,8 @@ function RegisterPage() {
 	}
 	async function handleSubmit(event) {
 		event.preventDefault();
-		console.log(password);
-		console.log(confirmPassword);
 		checkConfirmPassword();
+		await register({ name, email, password });
 	}
 	return (
 		<div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>

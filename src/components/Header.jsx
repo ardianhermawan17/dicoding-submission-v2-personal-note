@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import Switcher from './base/Switcher';
+import LogOutButton from './base/LogOutButton';
 import TransButton from './base/TransButton';
 import useDarkSide from '../hooks/useDarkSide';
 
@@ -10,6 +12,7 @@ import useDarkSide from '../hooks/useDarkSide';
 
 function Header() {
 	const [toggle, setToggle] = useState(false);
+	const { user } = useAuth();
 	const [theme] = useDarkSide();
 	const { t } = useTranslation();
 
@@ -85,17 +88,21 @@ function Header() {
 						toggle ? 'block' : 'hidden'
 					}`}
 				>
-					<ul className='justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0'>
-						{navigation.map((item, idx) => (
-							<li
-								// eslint-disable-next-line react/no-array-index-key
-								key={`${idx}`}
-								className='text-gray-600 dark:text-white dark:hover:text-indigo-600  text-lg hover:text-indigo-600'
-							>
-								<Link to={item.path}>{item.title}</Link>
-							</li>
-						))}
-					</ul>
+					{user ? (
+						<ul className='justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0'>
+							{navigation.map((item, idx) => (
+								<li
+									// eslint-disable-next-line react/no-array-index-key
+									key={`${idx}`}
+									className='text-gray-600 dark:text-white dark:hover:text-indigo-600  text-lg hover:text-indigo-600'
+								>
+									<Link to={item.path}>{item.title}</Link>
+								</li>
+							))}
+						</ul>
+					) : (
+						''
+					)}
 				</div>
 				<div
 					className={`flex-0 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
@@ -105,6 +112,7 @@ function Header() {
 					<div className='flex justify-between md:justify-start'>
 						<TransButton />
 						<Switcher />
+						<LogOutButton />
 					</div>
 				</div>
 			</div>

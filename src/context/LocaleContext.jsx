@@ -6,7 +6,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 const localeContext = createContext('');
 
 function LocaleProvider({ children }) {
-	const [locale, setLocale] = useLocalStorage('locale', 'id');
+	const [locale, setLocale] = useLocalStorage('locale', 'en');
 	const { i18n } = useTranslation();
 
 	function toggleLocale() {

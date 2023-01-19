@@ -7,4 +7,7 @@ export default {
 	register(payload) {
 		return axios.post('/register', payload);
 	},
+	getUserLogged() {
+		return axios.get('/users/me');
+	},
 };
