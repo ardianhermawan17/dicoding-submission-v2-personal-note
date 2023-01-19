@@ -1,8 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { addNote } from '../../utils/local-data';
+import noteService from '../../services/note.service';
 import FormField from '../base/FormField';
 
 function CreateNote() {
@@ -19,15 +19,26 @@ function CreateNote() {
 		}));
 	}
 
-	function onSaveNote() {
-		addNote({ title: note.title, body: note.body });
-
-		navigate('/');
+	async function onSaveNote(event) {
+		event.preventDefault();
+		const response = await noteService.create({
+			title: note.title,
+			body: note.body,
+		});
+		if (response.status !== 201) {
+			toast.error(response.data.message);
+		} else {
+			toast.success(response.data.message);
+			navigate('/');
+		}
 	}
 
 	return (
 		<div className='flex flex-col  items-center justify-around w-full h-auto p-4  bg-primary-600 rounded-xl'>
-			<form className='flex flex-col mt-2 items-center justify-between w-11/12 max-w-[600px] '>
+			<form
+				onSubmit={onSaveNote}
+				className='flex flex-col mt-2 items-center justify-between w-11/12 max-w-[600px] '
+			>
 				<div className='flex flex-col w-full md:flex-row'>
 					<FormField
 						maxLength={12}
@@ -42,16 +53,12 @@ function CreateNote() {
 				<textarea
 					value={note.body}
 					onChange={(event) => onHandleChange(event, 'body')}
-					className='p-3 my-3 mx-4 placeholder:font-hand placeholder:text-2xl w-full text-lg border-primary-300 roboto-regular  rounded-lg h-[200px] shadow-lg focus:outline-none'
+					className='p-3 my-3 mx-4 placeholder:font-hand placeholder:text-2xl w-full text-lg bg-gray-50 dark:bg-black  focus:border-indigo-600 text-gray-500 dark:text-white roboto-regular  rounded-lg h-[200px] shadow-lg focus:outline-none'
 					placeholder='Enter your message...'
 				/>
-				<input
-					onClick={() => onSaveNote()}
-					type='submit'
-					name='Send'
-					value='Send'
-					className='p-3 px-4 mx-auto mt-3 text-lg bg-blue-400 text-white rounded-lg shadow-md cursor-pointer text-primary-600 font-sans-bb h-3/4 hover:bg-sky-400'
-				/>
+				<button type='submit' className='p-4 mx-2 rounded-lg bg-blue-400'>
+					Send
+				</button>
 			</form>
 		</div>
 	);

@@ -23,4 +23,6 @@ export default {
 	'Daftar Arsip Notes': 'List Archive Notes',
 
 	'Cari berdasarkan judul': 'Search by title',
+
+	'Catatan kosong': 'Note empty',
 };

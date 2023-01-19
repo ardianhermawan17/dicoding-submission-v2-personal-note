@@ -5,26 +5,43 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { FiArchive, FiBookOpen, FiTrash } from 'react-icons/fi';
-import { deleteNote, archiveNote, unarchiveNote } from '../../utils/local-data';
+import { toast } from 'react-hot-toast';
+import noteService from '../../services/note.service';
+import archiveNoteService from '../../services/archiveNote.service';
 
 function NoteDetailButton({ id, archived }) {
 	const reactIconStyling = useMemo(() => ({ size: '20px' }));
 	const navigate = useNavigate();
 
-	function onDeleteNote(noteId) {
-		deleteNote(noteId);
-		console.log('aoasas');
-		navigate('/');
+	async function onDeleteNote(noteId) {
+		const response = await noteService.delete(noteId);
+		if (response.status !== 200) {
+			toast.error(response.data.message);
+		} else {
+			toast.success(response.data.message);
+			navigate('/');
+		}
 	}
 
-	function onArchiveNote(noteId) {
-		archiveNote(noteId);
-		navigate('/');
+	async function onArchiveNote(noteId) {
+		const response = await archiveNoteService.archiveNote(noteId);
+		console.log(response);
+		if (response.status !== 200) {
+			toast.error(response.data.message);
+		} else {
+			toast.success(response.data.message);
+			navigate('/');
+		}
 	}
 
-	function onUnarchiveNote(noteId) {
-		unarchiveNote(noteId);
-		navigate('/');
+	async function onUnarchiveNote(noteId) {
+		const response = await archiveNoteService.unArchiveNote(noteId);
+		if (response.status !== 200) {
+			toast.error(response.data.message);
+		} else {
+			toast.success(response.data.message);
+			navigate('/');
+		}
 	}
 
 	return (

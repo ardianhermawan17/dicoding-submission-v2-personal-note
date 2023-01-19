@@ -36,7 +36,7 @@ function FormField({
 				onKeyDown={onWordChange}
 				name={name}
 				placeholder={placeholder}
-				className={`${className} p-3 py-4 text-lg roboto-regular border-2 rounded-lg focus:outline-none border-none m-3 shadow-lg placeholder:font-hand placeholder:text-2xl`}
+				className={`${className} p-3 py-4 text-lg roboto-regular bg-gray-50 dark:bg-black  focus:border-indigo-600 text-gray-500 dark:text-white border-2 rounded-lg focus:outline-none m-3 shadow-lg placeholder:font-hand placeholder:text-2xl`}
 			/>
 		</div>
 	);

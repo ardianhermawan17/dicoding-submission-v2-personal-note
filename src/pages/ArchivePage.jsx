@@ -1,20 +1,27 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { searchNotes } from '../utils/local-data';
+import archiveNoteService from '../services/archiveNote.service';
 import SearchBar from '../components/base/SearchBar';
 import ArchiveNoteList from '../components/archive/ArchiveNoteList';
 
 function ArchivePage() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const keywordSearch = searchParams.get('keyword');
-	const [notes, setNotes] = useState(() => searchNotes('', false));
+	const [notes, setNotes] = useState([]);
 	const [keyword, setKeyword] = useState(keywordSearch ?? '');
+
+	useEffect(() => {
+		archiveNoteService
+			.getAll()
+			.then((res) => {
+				setNotes(res.data.data);
+			})
+			.catch((err) => console.error(err));
+	}, []);
 
 	function onKeywordChangeHandler(keywordText) {
 		setKeyword(() => keywordText);
-		setNotes(() => searchNotes(keywordText, true));
 		setSearchParams({ keyword: keywordText });
 	}
 

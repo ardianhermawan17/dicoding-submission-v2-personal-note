@@ -12,7 +12,6 @@ instance.interceptors.request.use(
 	(request) => {
 		// Do something before request is sent
 		const ACCESS_TOKEN = JSON.parse(window.localStorage.getItem('accessToken'));
-		console.log(ACCESS_TOKEN);
 		if (request.url.includes('login') || request.url.includes('register')) {
 			return request;
 		}

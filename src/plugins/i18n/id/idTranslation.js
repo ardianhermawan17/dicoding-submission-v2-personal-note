@@ -24,4 +24,6 @@ export default {
 	'Daftar Arsip Notes': 'Daftar Arsip Notes',
 
 	'Cari berdasarkan judul': 'Cari berdasarkan judul',
+
+	'Catatan kosong': 'Catatan kosong',
 };
